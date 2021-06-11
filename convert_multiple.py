@@ -12,8 +12,8 @@ def fetcher_timout(url, timeout=3600):
 LOG_DIR = "/app/logs/"
 DEST_DIR = "/app/output/"
 CONFIG_DIR = "/app/config/"
-LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
-logging.basicConfig(level=LOGLEVEL)
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO").upper())
 
 logger = logging.getLogger('weasyprint')
 logger.addHandler(logging.FileHandler(LOG_DIR + 'weasyprint.log'))
@@ -32,5 +32,5 @@ with open(config_file) as file:
 for name, html in config['html_files'].items():
   dest = DEST_DIR + name
   dest = dest.replace("{{DATE}}", date)
-  logging.debug("Generate " + html + " into " + dest)
+  logger.debug("Generate " + html + " into " + dest)
   HTML(html, url_fetcher=fetcher_timout).write_pdf(dest, font_config=font_config)
