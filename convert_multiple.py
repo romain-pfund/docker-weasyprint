@@ -13,9 +13,8 @@ LOG_DIR = "/app/logs/"
 DEST_DIR = "/app/output/"
 CONFIG_DIR = "/app/config/"
 
-logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO").upper())
-
 logger = logging.getLogger('weasyprint')
+logger.setLevel(level=os.environ.get("LOGLEVEL", "INFO").upper())
 logger.addHandler(logging.FileHandler(LOG_DIR + 'weasyprint.log'))
 
 ssl._create_default_https_context = ssl._create_unverified_context
