@@ -1,2 +1,2 @@
 html_files:
-  'weasyprint' : 'http://weasyprint.org'
+  '{{DATE}}_weasyprint.pdf' : 'http://weasyprint.org'

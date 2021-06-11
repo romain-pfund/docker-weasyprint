@@ -27,6 +27,7 @@ with open(config_file) as file:
   config = yaml.load(file, Loader=yaml.FullLoader)
 
 for name, html in config['html_files'].items():
-  dest = DEST_DIR + date + '_salesmat_' + name + '.pdf'
+  dest = DEST_DIR + name
+  dest = dest.replace("{{DATE}}", date)
   print("Generate " + html + " into " + dest)
   HTML(html, url_fetcher=fetcher_timout).write_pdf(dest, font_config=font_config)
