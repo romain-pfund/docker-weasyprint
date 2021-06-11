@@ -21,7 +21,7 @@ logging.basicConfig(level=LOGLEVEL)
 ssl._create_default_https_context = ssl._create_unverified_context
 
 now = date.today()
-date = now.strftime("%y%m%d")
+date = now.strftime("%Y%m%d")
 
 font_config = FontConfiguration()
 
