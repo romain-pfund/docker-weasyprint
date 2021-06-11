@@ -15,6 +15,9 @@ CONFIG_DIR = "/app/config/"
 
 logger = logging.getLogger('weasyprint')
 logger.addHandler(logging.FileHandler(LOG_DIR + 'weasyprint.log'))
+LOGLEVEL = os.environ.get('LOGLEVEL', 'INFO').upper()
+logging.basicConfig(level=LOGLEVEL)
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 now = date.today()
